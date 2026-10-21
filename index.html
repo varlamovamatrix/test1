@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бусы счастья — Мастер-класс по созданию украшений из натуральных камней</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sand: {
+                            50: '#FDFCFA',
+                            100: '#F7F4EE',
+                            200: '#EFE9DF',
+                            300: '#DFD5C6',
+                        },
+                        deep: '#2C2725',
+                        mutedEarth: '#6B635E',
+                        forest: {
+                            DEFAULT: '#1E3F35',
+                            dark: '#142C25',
+                            light: '#2B5749'
+                        },
+                        sage: '#8A9A86',
+                        gold: {
+                            DEFAULT: '#C6A664',
+                            light: '#E2CA92',
+                            dark: '#A58442'
+                        },
+                        amethyst: {
+                            DEFAULT: '#4D2D52',
+                            soft: '#6F4376'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        script: ['"Caveat"', 'cursive'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #F7F4EE;
+            color: #2C2725;
+            overflow-x: hidden;
+        }
+        .font-serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .font-script {
+            font-family: 'Caveat', cursive;
+        }
+        .texture-subtle {
+            background-image: radial-gradient(#2C2725 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+            background-color: #F7F4EE;
+            opacity: 0.98;
+        }
+        .gold-border {
+            border: 1px solid rgba(198, 166, 100, 0.4);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="selection:bg-gold/30 selection:text-forest">
+
+    <!-- ХЕДЕР / НАВИГАЦИЯ -->
+    <header class="fixed top-0 left-0 w-full z-40 bg-[#F7F4EE]/90 backdrop-blur-md border-b border-sand-300 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex flex-col group">
+                <span class="font-serif text-2xl sm:text-3xl font-semibold tracking-wide text-forest transition group-hover:text-gold-dark">Бусы счастья</span>
+                <span class="font-script text-sm sm:text-base text-mutedEarth -mt-1 tracking-wider">Смыслы, которые рядом</span>
+            </a>
+
+            <!-- Десктоп-меню -->
+            <nav class="hidden md:flex items-center space-x-7 text-sm font-medium text-deep">
+                <a href="#about" class="hover:text-forest transition">Философия</a>
+                <a href="#audience" class="hover:text-forest transition">Для кого</a>
+                <a href="#gallery" class="hover:text-forest transition">Работы</a>
+                <a href="#program" class="hover:text-forest transition">Программа</a>
+                <a href="#results" class="hover:text-forest transition">Результат</a>
+                <a href="#reviews" class="hover:text-forest transition">Отзывы</a>
+                <a href="#pricing" class="hover:text-forest transition">Тарифы</a>
+                <a href="#faq" class="hover:text-forest transition">FAQ</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <button onclick="openBookingModal('Базовый')" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold bg-forest text-sand-50 hover:bg-forest-light transition duration-300 shadow-sm hover:shadow-md">
+                    Забронировать
+                </button>
+                <button id="mobile-menu-btn" class="md:hidden text-deep p-2 focus:outline-none" aria-label="Открыть меню">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Мобильное выпадающее меню -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#F7F4EE] border-b border-sand-300 px-6 py-5 space-y-4 shadow-lg text-sm font-medium">
+            <a href="#about" onclick="toggleMenu()" class="block text-deep hover:text-forest">Философия</a>
+            <a href="#audience" onclick="toggleMenu()" class="block text-deep hover:text-forest">Для кого</a>
+            <a href="#gallery" onclick="toggleMenu()" class="block text-deep hover:text-forest">Работы</a>
+            <a href="#program" onclick="toggleMenu()" class="block text-deep hover:text-forest">Программа</a>
+            <a href="#results" onclick="toggleMenu()" class="block text-deep hover:text-forest">Результат</a>
+            <a href="#reviews" onclick="toggleMenu()" class="block text-deep hover:text-forest">Отзывы</a>
+            <a href="#pricing" onclick="toggleMenu()" class="block text-deep hover:text-forest">Тарифы</a>
+            <a href="#faq" onclick="toggleMenu()" class="block text-deep hover:text-forest">FAQ</a>
+            <button onclick="openBookingModal('Базовый'); toggleMenu();" class="w-full text-center py-3 rounded-full text-xs uppercase tracking-widest font-semibold bg-forest text-sand-50">
+                Забронировать место
+            </button>
+        </div>
+    </header>
+
+    <!-- ПЕРВЫЙ ЭКРАН (HERO) -->
+    <section class="pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                
+                <!-- Левая колонка с текстом -->
+                <div class="lg:col-span-7 flex flex-col items-start z-10">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sand-200 border border-sand-300 text-xs font-medium text-forest mb-6">
+                        <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+                        Камерный офлайн мастер-класс в уютной студии
+                    </div>
+
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal leading-tight text-deep mb-6">
+                        Украшение со смыслом: <br/>
+                        <span class="italic font-light text-forest">создай свой талисман</span> <br class="hidden sm:block" />
+                        из натуральных камней
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-mutedEarth font-light leading-relaxed mb-8 max-w-xl">
+                        Живая творческая встреча, где вы подберёте минералы под свой личный запрос, освоите профессиональную ювелирную сборку и унесёте с собой украшение, заряженное вашим намерением.
+                    </p>
+
+                    <!-- Преимущества списком -->
+                    <div class="space-y-3 mb-8 text-sm sm:text-base text-deep font-medium">
+                        <div class="flex items-center gap-3">
+                            <span class="text-gold text-lg">✦</span>
+                            <span>Группа до 6–8 человек — внимание мастера к каждому</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-gold text-lg">✦</span>
+                            <span>Все минералы, премиальная фурнитура и угощения включены</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-gold text-lg">✦</span>
+                            <span>Получится идеально даже у тех, кто держит тросик впервые</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
+                        <a href="#pricing" class="inline-flex justify-center items-center px-8 py-4 rounded-full bg-forest text-sand-50 font-medium tracking-wide shadow-lg hover:bg-forest-light hover:shadow-xl hover:-translate-y-0.5 transition duration-300 text-sm">
+                            Выбрать тариф и записаться
+                        </a>
+                        <span class="text-xs text-mutedEarth italic text-center sm:text-left self-center">
+                            <comment-tag id="1">Осталось всего 4 свободных места<br class="hidden sm:block"/>на ближайшую дату</comment-tag id="1" text="Текст создает ощущение искусственного дефицита, потому что нигде в первом экране не указаны конкретный город и точная дата встречи. В офлайн-мероприятиях конверсия резко падает, если посетитель не понимает локацию и расписание в первые 5 секунд.
+
+Рекомендация: замените абстрактную фразу на конкретную привязку к дате, городу и формату предоплаты.
+Пример:
+'📍 Москва, м. Чистые пруды · 25 октября (Сб) 12:00
+Бронь места по предоплате всего 1 000 ₽'" type="suggestion">
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Правая колонка с эстетичными карточками -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <!-- Декоративные фоновые элементы -->
+                        <div class="absolute -top-6 -right-6 w-48 h-48 rounded-full bg-gold/15 blur-2xl -z-10"></div>
+                        <div class="absolute -bottom-6 -left-6 w-56 h-56 rounded-full bg-forest/10 blur-2xl -z-10"></div>
+                        
+                        <!-- Главное фото -->
+                        <div class="rounded-3xl overflow-hidden shadow-2xl border-4 border-white/60 relative group">
+                            <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=900&q=80" 
+                                 alt="Украшения из натуральных минералов на мастер-классе" 
+                                 class="w-full h-[460px] object-cover group-hover:scale-105 transition duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-deep/50 via-transparent to-transparent"></div>
+                            
+                            <!-- Накладной бейдж -->
+                            <div class="absolute bottom-5 left-5 right-5 glass-card p-4 rounded-2xl border border-white/50 text-deep">
+                                <p class="font-serif italic text-lg leading-tight">«Каждый камень находит своего владельца»</p>
+                                <span class="font-script text-base text-gold-dark mt-1 block">Аметист, Лабрадор, Розовый кварц, Агат</span>
+                            </div>
+                        </div>
+
+                        <!-- Маленькая плавающая карточка -->
+                        <div class="hidden sm:flex absolute -bottom-5 -left-8 bg-sand-50/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-sand-300 items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-sage/20 text-forest flex items-center justify-center font-serif text-xl">
+                                ☕
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold text-deep">Уютная атмосфера</p>
+                                <p class="text-[11px] text-mutedEarth">Травяной чай & свечи</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ФИЛОСОФИЯ БРЕНДА («Бусы счастья — это...») -->
+    <section id="about" class="py-16 md:py-24 bg-sand-200/50 border-y border-sand-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="font-script text-2xl text-gold-dark block mb-2">Философия бренда</span>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-deep">Бусы счастья — это...</h2>
+                <div class="w-12 h-0.5 bg-gold mx-auto mt-4 mb-4"></div>
+                <p class="text-sm sm:text-base text-mutedEarth font-light">
+                    Глубокое соединение природы, эстетики ручного труда и бережного отношения к женскому внутреннему миру.
+                </p>
+            </div>
+
+            <!-- Триптих из брендбука -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- 1. ПРО украшения -->
+                <div class="relative bg-sand-50 rounded-3xl p-8 border border-sand-300/80 shadow-sm hover:shadow-md transition duration-300 flex flex-col items-center text-center group">
+                    <div class="w-20 h-20 rounded-full bg-forest/10 border border-forest/20 flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+                        <svg class="w-9 h-9 text-forest" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                            <polyline points="2 17 12 22 22 17"></polyline>
+                            <polyline points="2 12 12 17 22 12"></polyline>
+                        </svg>
+                    </div>
+                    <span class="text-xs uppercase tracking-widest text-gold-dark font-semibold mb-1">Основа</span>
+                    <h3 class="font-serif text-2xl font-semibold text-deep mb-3">ПРО украшения</h3>
+                    <p class="text-sm text-mutedEarth leading-relaxed">
+                        Настоящие природные минералы, благородная гипоаллергенная фурнитура и тепло ручной работы. Каждое изделие неповторимо, как рисунок камня.
+                    </p>
+                </div>
+
+                <!-- 2. ПРО женщин -->
+                <div class="relative bg-sand-50 rounded-3xl p-8 border border-sand-300/80 shadow-sm hover:shadow-md transition duration-300 flex flex-col items-center text-center group">
+                    <div class="w-20 h-20 rounded-full bg-amethyst/10 border border-amethyst/20 flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+                        <svg class="w-9 h-9 text-amethyst" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                        </svg>
+                    </div>
+                    <span class="text-xs uppercase tracking-widest text-gold-dark font-semibold mb-1">Душа</span>
+                    <h3 class="font-serif text-2xl font-semibold text-deep mb-3">ПРО женщин</h3>
+                    <p class="text-sm text-mutedEarth leading-relaxed">
+                        Вдохновение, самовыражение и мягкая женская сила. Пространство, в котором можно замедлиться, услышать себя и почувствовать гармонию.
+                    </p>
+                </div>
+
+                <!-- 3. ПРО жизнь -->
+                <div class="relative bg-sand-50 rounded-3xl p-8 border border-sand-300/80 shadow-sm hover:shadow-md transition duration-300 flex flex-col items-center text-center group">
+                    <div class="w-20 h-20 rounded-full bg-gold/15 border border-gold/30 flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+                        <svg class="w-9 h-9 text-gold-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </div>
+                    <span class="text-xs uppercase tracking-widest text-gold-dark font-semibold mb-1">Момент</span>
+                    <h3 class="font-serif text-2xl font-semibold text-deep mb-3">ПРО жизнь</h3>
+                    <p class="text-sm text-mutedEarth leading-relaxed">
+                        Энергия, тактильная красота в мелочах и умение дарить себе радость «здесь и сейчас». Украшение как материальное напоминание о важном.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ДЛЯ КОГО ЭТОТ МАСТЕР-КЛАСС -->
+    <section id="audience" class="py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="font-script text-2xl text-gold-dark block mb-2">Отклик в сердце</span>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-deep">Для кого этот мастер-класс</h2>
+                <div class="w-12 h-0.5 bg-gold mx-auto mt-4 mb-4"></div>
+                <p class="text-mutedEarth font-light text-sm sm:text-base">
+                    Вам точно будет комфортно и ценно, если вы узнаете в этих строках себя:
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Карточка 1 -->
+                <div class="bg-sand-50 border border-sand-300 rounded-3xl p-6 sm:p-7 hover:border-gold/60 transition duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-forest/10 text-forest flex items-center justify-center text-xl mb-5">
+                            🌿
+                        </div>
+                        <h3 class="font-serif text-xl font-semibold text-deep mb-3">Для тех, кто хочет замедлиться</h3>
+                        <p class="text-xs sm:text-sm text-mutedEarth leading-relaxed">
+                            Сменить привычную рутину, переключить внимание с бесконечного потока уведомлений и погрузиться в медитативный творческий процесс работы руками.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-sand-200 text-xs text-gold-dark font-medium">
+                        Арт-терапия и отдых
+                    </div>
+                </div>
+
+                <!-- Карточка 2 -->
+                <div class="bg-sand-50 border border-sand-300 rounded-3xl p-6 sm:p-7 hover:border-gold/60 transition duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-gold/15 text-gold-dark flex items-center justify-center text-xl mb-5">
+                            ✨
+                        </div>
+                        <h3 class="font-serif text-xl font-semibold text-deep mb-3">Для ценителей эстетики</h3>
+                        <p class="text-xs sm:text-sm text-mutedEarth leading-relaxed">
+                            Кому важно носить не конвейерный масс-маркет, а природные, тактильные камни с индивидуальной историей, текстурой и характером.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-sand-200 text-xs text-gold-dark font-medium">
+                        Натуральные минералы
+                    </div>
+                </div>
+
+                <!-- Карточка 3 -->
+                <div class="bg-sand-50 border border-sand-300 rounded-3xl p-6 sm:p-7 hover:border-gold/60 transition duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-amethyst/10 text-amethyst flex items-center justify-center text-xl mb-5">
+                            🌙
+                        </div>
+                        <h3 class="font-serif text-xl font-semibold text-deep mb-3">Для ищущих опору</h3>
+                        <p class="text-xs sm:text-sm text-mutedEarth leading-relaxed">
+                            Собрать украшение как видимый материальный якорь для вашей внутренней цели: на гармонию, проявленность, уверенность или финансовое спокойствие.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-sand-200 text-xs text-gold-dark font-medium">
+                        Смысл и намерение
+                    </div>
+                </div>
+
+                <!-- Карточка 4 -->
+                <div class="bg-sand-50 border border-sand-300 rounded-3xl p-6 sm:p-7 hover:border-gold/60 transition duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-sage/20 text-forest flex items-center justify-center text-xl mb-5">
+                            🌸
+                        </div>
+                        <h3 class="font-serif text-xl font-semibold text-deep mb-3">Для абсолютных новичков</h3>
+                        <p class="text-xs sm:text-sm text-mutedEarth leading-relaxed">
+                            Никаких навыков не требуется! Под бережным пошаговым руководством мастера ювелирная сборка получится с первого раза у каждой участницы.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-sand-200 text-xs text-gold-dark font-medium">
+                        100% получится
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ПРИМЕРЫ ГОТОВЫХ РАБОТ -->
+    <section id="gallery" class="py-16 md:py-24 bg-sand-200/50 border-t border-sand-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="font-script text-2xl text-gold-dark block mb-2">Живая эстетика</span>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-deep">Примеры созданных изделий</h2>
+                <div class="w-12 h-0.5 bg-gold mx-auto mt-4 mb-4"></div>
+                <p class="text-mutedEarth font-light text-sm sm:text-base">
+                    Листайте примеры браслетов, чокеров и сетов, которые наши участницы создают на мастер-классе.
+                </p>
+            </div>
+
+            <!-- Слайдер-карусель -->
+            <div class="relative max-w-5xl mx-auto">
+                <!-- Окно карусели -->
+                <div id="slider-track-container" class="overflow-hidden rounded-3xl cursor-grab active:cursor-grabbing">
+                    <div id="slider-track" class="flex transition-transform duration-500 ease-out">
+                        
+                        <!-- Слайд 1 -->
+                        <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
+                            <div class="group bg-sand-50 rounded-3xl p-3 sm:p-4 border border-sand-300/80 shadow-sm hover:shadow-xl transition duration-500 flex flex-col h-full">
+                                <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-sand-200 mb-4">
+                                    <img src="https://i.postimg.cc/rsTp2mJW/1.jpg" 
+                                         alt="Украшение ручной работы из натуральных камней — пример 1" 
+                                         class="w-full h-full object-cover group-hover:scale-105 transition duration-700 pointer-events-none select-none">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-deep/55 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300"></div>
+                                    <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-medium tracking-wide bg-sand-50/90 backdrop-blur-sm text-forest border border-sand-300/60 shadow-sm">
+                                        Минеральный сет
+                                    </span>
+                                </div>
+                                <div class="px-2 pb-2 flex-1 flex flex-col justify-between">
+                                    <div>
+                                        <h3 class="font-serif text-xl font-semibold text-deep group-hover:text-forest transition">Природная гармония</h3>
+                                        <p class="text-xs text-mutedEarth mt-1.5 leading-relaxed font-light">
+                                            Благородная подборка минералов земных оттенков: игра фактур, природный вес и мягкое сияние.
+                                        </p>
+                                    </div>
+                                    <div class="mt-4 pt-3 border-t border-sand-200 flex items-center justify-between text-xs text-gold-dark font-medium">
+                                        <span>Натуральные камни</span>
+                                        <span class="text-forest">✦ Сделано на МК</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Слайд 2 -->
+                        <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
+                            <div class="group bg-sand-50 rounded-3xl p-3 sm:p-4 border border-sand-300/80 shadow-sm hover:shadow-xl transition duration-500 flex flex-col h-full">
+                                <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-sand-200 mb-4">
+                                    <img src="https://i.postimg.cc/rF8phDzd/2.jpg" 
+                                         alt="Украшение ручной работы из натуральных камней — пример 2" 
+                                         class="w-full h-full object-cover group-hover:scale-105 transition duration-700 pointer-events-none select-none">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-deep/55 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300"></div>
+                                    <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-medium tracking-wide bg-sand-50/90 backdrop-blur-sm text-forest border border-sand-300/60 shadow-sm">
+                                        Деликатный акцент
+                                    </span>
+                                </div>
+                                <div class="px-2 pb-2 flex-1 flex flex-col justify-between">
+                                    <div>
+                                        <h3 class="font-serif text-xl font-semibold text-deep group-hover:text-forest transition">Тактильная нежность</h3>
+                                        <p class="text-xs text-mutedEarth mt-1.5 leading-relaxed font-light">
+                                            Идеально сбалансированная геометрия бусин с гипоаллергенной фурнитурой стойкого золотого оттенка.
+                                        </p>
+                                    </div>
+                                    <div class="mt-4 pt-3 border-t border-sand-200 flex items-center justify-between text-xs text-gold-dark font-medium">
+                                        <span>Авторский ритм</span>
+                                        <span class="text-forest">✦ Сделано на МК</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Слайд 3 -->
+                        <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
+                            <div class="group bg-sand-50 rounded-3xl p-3 sm:p-4 border border-sand-300/80 shadow-sm hover:shadow-xl transition duration-500 flex flex-col h-full">
+                                <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-sand-200 mb-4">
+                                    <img src="https://i.postimg.cc/mDfL7DKJ/3.jpg" 
+                                         alt="Украшение ручной работы из натуральных камней — пример 3" 
+                                         class="w-full h-full object-cover group-hover:scale-105 transition duration-700 pointer-events-none select-none">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-deep/55 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300"></div>
+                                    <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-medium tracking-wide bg-sand-50/90 backdrop-blur-sm text-forest border border-sand-300/60 shadow-sm">
+                                        Многослойный талисман
+                                    </span>
+                                </div>
+                                <div class="px-2 pb-2 flex-1 flex flex-col justify-between">
+                                    <div>
+                                        <h3 class="font-serif text-xl font-semibold text-deep group-hover:text-forest transition">Глубокие смыслы</h3>
+                                        <p class="text-xs text-mutedEarth mt-1.5 leading-relaxed font-light">
+                                            Композиция под индивидуальное намерение: украшение, которое дарит внутреннюю опору каждый день.
+                                        </p>
+                                    </div>
+                                    <div class="mt-4 pt-3 border-t border-sand-200 flex items-center justify-between text-xs text-gold-dark font-medium">
+                                        <span>Премиум-сборка</span>
+                                        <span class="text-forest">✦ Сделано на МК</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Слайд 4 -->
+                        <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-3">
+                            <div class="group bg-sand-50 rounded-3xl p-3 sm:p-4 border border-sand-300/80 shadow-sm hover:shadow-xl transition duration-500 flex flex-col h-full">
+                                <div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-sand-200 mb-4">
+                                    <img src="https://i.postimg.cc/1XMyxKXd/4.jpg" 
+                                         alt="Украшение ручной работы из натуральных камней — пример 4" 
+                                         class="w-full h-full object-cover group-hover:scale-105 transition duration-700 pointer-events-none select-none">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-deep/55 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300"></div>
+                                    <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-medium tracking-wide bg-sand-50/90 backdrop-blur-sm text-forest border border-sand-300/60 shadow-sm">
+                                        Сияние кристаллов
+                                    </span>
+                                </div>
+                                <div class="px-2 pb-2 flex-1 flex flex-col justify-between">
+                                    <div>
+                                        <h3 class="font-serif text-xl font-semibold text-deep group-hover:text-forest transition">Искрящийся акцент</h3>
+                                        <p class="text-xs text-mutedEarth mt-1.5 leading-relaxed font-light">
+                                            Ювелирная точность креплений, надежный замочек и живые переливы природной структуры камня.
+                                        </p>
+                                    </div>
+                                    <div class="mt-4 pt-3 border-t border-sand-200 flex items-center justify-between text-xs text-gold-dark font-medium">
+                                        <span>Индивидуальный размер</span>
+                                        <span class="text-forest">✦ Сделано на МК</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Стрелки навигации карусели -->
+                <button id="slider-prev" class="absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-sand-50/90 hover:bg-forest hover:text-sand-50 text-deep border border-sand-300 shadow-lg flex items-center justify-center transition duration-300 z-10 focus:outline-none" aria-label="Предыдущий слайд">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                <button id="slider-next" class="absolute -right-3 sm:-right-5 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-sand-50/90 hover:bg-forest hover:text-sand-50 text-deep border border-sand-300 shadow-lg flex items-center justify-center transition duration-300 z-10 focus:outline-none" aria-label="Следующий слайд">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+
+                <!-- Точечные индикаторы (dots) -->
+                <div id="slider-dots" class="flex justify-center items-center gap-2 mt-6">
+                    <!-- Генерируются динамически через JS -->
+                </div>
+            </div>
+
+            <!-- Информационная плашка под галереей с призывом -->
+            <div class="mt-10 text-center bg-sand-50/80 border border-sand-300 rounded-2xl p-6 max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="text-left">
+                    <p class="font-serif text-lg font-semibold text-deep">Хотите создать украшение в своём уникальном стиле?</p>
+                    <p class="text-xs text-mutedEarth mt-0.5">В студии вас ждёт более 25 видов натуральных минералов на выбор</p>
+                </div>
+                <button onclick="openBookingModal('Базовый')" class="whitespace-nowrap px-6 py-3 rounded-full bg-forest text-sand-50 hover:bg-forest-light text-xs uppercase tracking-wider font-semibold transition duration-300 shadow-sm">
+                    Собрать своё
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПРОГРАММА ВСТРЕЧИ (Хронология 2,5-3 часа) -->
+    <section id="program" class="py-16 md:py-24 bg-sand-200/40 border-t border-sand-300">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="font-script text-2xl text-gold-dark block mb-2">Пошаговый путь</span>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-deep">Программа мастер-класса</h2>
+                <div class="w-12 h-0.5 bg-gold mx-auto mt-4 mb-4"></div>
+                <p class="text-mutedEarth font-light text-sm sm:text-base">
+                    2,5–3 часа глубокого погружения в атмосферу творчества, камней и тепла
+                </p>
+            </div>
+
+            <!-- Таймлайн этапов -->
+            <div class="relative">
+                <!-- Вертикальная линия для десктопа -->
+                <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-sand-300 -translate-x-1/2"></div>
+
+                <div class="space-y-10 md:space-y-16">
+                    
+                    <!-- Этап 1 -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right w-full">
+                            <span class="inline-block px-3 py-1 rounded-full bg-sand-100 border border-sand-300 text-xs font-semibold text-forest mb-2">Этап 1 (~30 мин)</span>
+                            <h3 class="font-serif text-2xl font-semibold text-deep mb-2">Знакомство и настройка на процесс</h3>
+                            <p class="text-sm text-mutedEarth leading-relaxed">
+                                Тёплый травяной чай, мягкий свет свечей и знакомство с палитрой минералов. Разберёмся, как работают свойства камней, как слушать свой отклик и выбирать минералы интуитивно или под конкретную задачу.
+                            </p>
+                        </div>
+                        <div class="my-4 md:my-0 w-10 h-10 rounded-full bg-forest text-sand-50 flex items-center justify-center font-serif text-base font-bold shadow-md z-10">
+                            1
+                        </div>
+                        <div class="md:w-1/2 md:pl-12 w-full">
+                            <div class="rounded-2xl overflow-hidden shadow-sm border border-sand-300 max-h-48">
+                                <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80" alt="Знакомство с материалами" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Этап 2 -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right w-full order-1 md:order-1">
+                            <div class="rounded-2xl overflow-hidden shadow-sm border border-sand-300 max-h-48 hidden md:block">
+                                <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=600&q=80" alt="Подбор камней и палитры" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <div class="my-4 md:my-0 w-10 h-10 rounded-full bg-gold-dark text-sand-50 flex items-center justify-center font-serif text-base font-bold shadow-md z-10 order-2 md:order-2">
+                            2
+                        </div>
+                        <div class="md:w-1/2 md:pl-12 w-full order-3 md:order-3">
+                            <span class="inline-block px-3 py-1 rounded-full bg-sand-100 border border-sand-300 text-xs font-semibold text-gold-dark mb-2">Этап 2 (~45 мин)</span>
+                            <h3 class="font-serif text-2xl font-semibold text-deep mb-2">Подбор камней и дизайн</h3>
+                            <p class="text-sm text-mutedEarth leading-relaxed">
+                                Вы выберете основу своего изделия: натуральные агаты, кварцы, лабрадорит, гематит, яшму и другие. Составите гармоничную цветовую композицию и расставите смысловые акценты.
+                            </p>
+                            <div class="rounded-2xl overflow-hidden shadow-sm border border-sand-300 max-h-48 mt-4 md:hidden">
+                                <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=600&q=80" alt="Подбор камней и палитры" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Этап 3 -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right w-full">
+                            <span class="inline-block px-3 py-1 rounded-full bg-sand-100 border border-sand-300 text-xs font-semibold text-amethyst mb-2">Этап 3 (~60 мин)</span>
+                            <h3 class="font-serif text-2xl font-semibold text-deep mb-2">Практика и сборка</h3>
+                            <p class="text-sm text-mutedEarth leading-relaxed">
+                                Осваиваем профессиональные ювелирные тонкости: работу с ювелирным тросиком и эластомерной нитью, фиксацию кримпов, протекторов, подбор стойкой фурнитуры и надежных замочков.
+                            </p>
+                        </div>
+                        <div class="my-4 md:my-0 w-10 h-10 rounded-full bg-amethyst text-sand-50 flex items-center justify-center font-serif text-base font-bold shadow-md z-10">
+                            3
+                        </div>
+                        <div class="md:w-1/2 md:pl-12 w-full">
+                            <div class="rounded-2xl overflow-hidden shadow-sm border border-sand-300 max-h-48">
+                                <img src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=600&q=80" alt="Ювелирная сборка изделия" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Этап 4 -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right w-full order-1 md:order-1">
+                            <div class="rounded-2xl overflow-hidden shadow-sm border border-sand-300 max-h-48 hidden md:block">
+                                <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80" alt="Упаковка готового украшения" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <div class="my-4 md:my-0 w-10 h-10 rounded-full bg-sage text-sand-50 flex items-center justify-center font-serif text-base font-bold shadow-md z-10 order-2 md:order-2">
+                            4
+                        </div>
+                        <div class="md:w-1/2 md:pl-12 w-full order-3 md:order-3">
+                            <span class="inline-block px-3 py-1 rounded-full bg-sand-100 border border-sand-300 text-xs font-semibold text-forest mb-2">Этап 4 (~20 мин)</span>
+                            <h3 class="font-serif text-2xl font-semibold text-deep mb-2">Финальное оформление и ритуал</h3>
+                            <p class="text-sm text-mutedEarth leading-relaxed">
+                                Завершение сборки, фиксация вашего намерения на ношение изделия и упаковка готового талисмана в бархатный или льняной мешочек с персональной карточкой-описанием камней.
+                            </p>
+                            <div class="rounded-2xl overflow-hidden shadow-sm border border-sand-300 max-h-48 mt-4 md:hidden">
+                                <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80" alt="Упаковка готового украшения" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ЧТО ВЫ ПОЛУЧИТЕ В РЕЗУЛЬТАТЕ -->
+    <section id="results" class="py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="font-script text-2xl text-gold-dark block mb-2">Ценность для вас</span>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-deep">Что вы унесёте с собой</h2>
+                <div class="w-12 h-0.5 bg-gold mx-auto mt-4 mb-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <div class="bg-sand-50 rounded-3xl p-6 border border-sand-300 flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="font-serif text-4xl text-forest/30 font-bold mb-3">01</div>
+                        <h4 class="font-serif text-xl font-semibold text-deep mb-2">Готовое авторское украшение</h4>
+                        <p class="text-xs sm:text-sm text-mutedEarth leading-relaxed">
+                            Браслет или чокер из проверенных натуральных минералов, который идеально сидит на руке и создан персонально под вас.
+                        </p>
+                    </div>
+                    <div class="mt-4 text-xs font-semibold text-forest flex items-center gap-1">
+                        <span>✦</span> Настоящие камни
+                    </div>
+                </div>
+
+                <div class="bg-sand-50 rounded-3xl p-6 border border-sand-300 flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="font-serif text-4xl text-gold/40 font-bold mb-3">02</div>
+                        <h4 class="font-serif text-xl font-semibold text-deep mb-2">Базовый навык сборки</h4>
+                        <p class="text-xs sm:text-sm text-mutedEarth leading-relaxed">
+                            Понимание долговечности фурнитуры, фиксации замков, а также правила очищения и бережного домашнего ухода за минералами.
+                        </p>
+                    </div>
+                    <div class="mt-4 text-xs font-semibold text-gold-dark flex items-center gap-1">
+                        <span>✦</span> Полезный опыт
+                    </div>
+                </div>
+
+                <div class="bg-sand-50 rounded-3xl p-6 border border-sand-300 flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="font-serif text-4xl text-amethyst/30 font-bold mb-3">03</div>
+                        <h4 class="font-serif text-xl font-semibold text-deep mb-2">Состояние перезагрузки</h4>
+                        <p class="text-xs sm:text-sm text-mutedEarth leading-relaxed">
+                            3 часа спокойной арт-терапии без гаджетов, спешки и суеты в тёплом, вдохновляющем кругу женщин.
+                        </p>
+                    </div>
+                    <div class="mt-4 text-xs font-semibold text-amethyst flex items-center gap-1">
+                        <span>✦</span> Глубокий отдых
+                    </div>
+                </div>
+
+                <div class="bg-sand-50 rounded-3xl p-6 border border-sand-300 flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="font-serif text-4xl text-sage/60 font-bold mb-3">04</div>
+                        <h4 class="font-serif text-xl font-semibold text-deep mb-2">Эстетичная упаковка</h4>
+                        <p class="text-xs sm:text-sm text-mutedEarth leading-relaxed">
+                            Подарочный брендовый мешочек и карточка с описанием свойств выбранных камней — готово для подарка себе или близкому человеку.
+                        </p>
+                    </div>
+                    <div class="mt-4 text-xs font-semibold text-forest flex items-center gap-1">
+                        <span>✦</span> Полный комплект
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ОТЗЫВЫ УЧАСТНИЦ -->
+    <section id="reviews" class="py-16 md:py-24 bg-sand-200/50 border-t border-sand-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="font-script text-2xl text-gold-dark block mb-2">Теплые слова</span>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-deep">Истории и впечатления</h2>
+                <div class="w-12 h-0.5 bg-gold mx-auto mt-4 mb-4"></div>
+                <p class="text-mutedEarth font-light text-sm sm:text-base">
+                    Искренние эмоции женщин, которые уже создали свои особенные талисманы
+                </p>
+            </div>
+
+            <!-- Сетка отзывов (плейсхолдеры, готовые к замене на реальные) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Отзыв 1 -->
+                <div class="bg-sand-50 rounded-3xl p-7 border border-sand-300 shadow-sm hover:shadow-md transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <!-- Звёзды рейтинга -->
+                        <div class="flex items-center gap-1 text-gold mb-4 text-sm">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="text-deep font-serif italic text-lg leading-snug mb-4">
+                            «Шла с мыслью просто отвлечься от работы, а ушла с невероятным чувством наполненности. Свой браслет теперь ношу каждый день!»
+                        </p>
+                        <p class="text-xs sm:text-sm text-mutedEarth font-light leading-relaxed">
+                            Атмосфера в студии волшебная: свечи, чай, приятная музыка. Мастер так бережно и понятно всё объясняет, что получилось с первого раза, хотя я очень переживала за замочки.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-5 border-t border-sand-200 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-forest/15 text-forest flex items-center justify-center font-serif font-bold text-sm">
+                                ЕВ
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold text-deep">Екатерина В.</p>
+                                <p class="text-[11px] text-mutedEarth">Тариф «Базовый»</p>
+                            </div>
+                        </div>
+                        <span class="text-[11px] text-gold-dark font-medium bg-sand-200/80 px-2.5 py-1 rounded-full">
+                            Браслет из агата
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Отзыв 2 -->
+                <div class="bg-sand-50 rounded-3xl p-7 border border-sand-300 shadow-sm hover:shadow-md transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-gold mb-4 text-sm">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="text-deep font-serif italic text-lg leading-snug mb-4">
+                            «Приходили вместе с мамой — это был лучший подарок для нас обеих. Настоящее время для души и тёплого общения.»
+                        </p>
+                        <p class="text-xs sm:text-sm text-mutedEarth font-light leading-relaxed">
+                            Огромный выбор камней, каждый можно подержать в руках и почувствовать его тепло. Метафорическая карта в конце попала точно в цель. Обязательно придём ещё!
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-5 border-t border-sand-200 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-gold/20 text-gold-dark flex items-center justify-center font-serif font-bold text-sm">
+                                АС
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold text-deep">Анна и Светлана</p>
+                                <p class="text-[11px] text-mutedEarth">Тариф «Вдвоём»</p>
+                            </div>
+                        </div>
+                        <span class="text-[11px] text-gold-dark font-medium bg-sand-200/80 px-2.5 py-1 rounded-full">
+                            Сеты с аметистом
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Отзыв 3 -->
+                <div class="bg-sand-50 rounded-3xl p-7 border border-sand-300 shadow-sm hover:shadow-md transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-gold mb-4 text-sm">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        <p class="text-deep font-serif italic text-lg leading-snug mb-4">
+                            «Качество камней и фурнитуры превзошло все ожидания. Чокер выглядит как из дорогого бутика!»
+                        </p>
+                        <p class="text-xs sm:text-sm text-mutedEarth font-light leading-relaxed">
+                            Очень ценно, что группа небольшая, мастер успевает уделить внимание каждому. Узнала столько нового о свойствах кристаллов и правильном уходе за ними.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-5 border-t border-sand-200 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-amethyst/15 text-amethyst flex items-center justify-center font-serif font-bold text-sm">
+                                МД
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold text-deep">Мария Д.</p>
+                                <p class="text-[11px] text-mutedEarth">Тариф «Расширенный»</p>
+                            </div>
+                        </div>
+                        <span class="text-[11px] text-gold-dark font-medium bg-sand-200/80 px-2.5 py-1 rounded-full">
+                            Чокер с лабрадором
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Дополнительная плашка доверия -->
+            <div class="mt-12 text-center flex flex-wrap items-center justify-center gap-6 text-xs text-mutedEarth font-medium">
+                <span class="flex items-center gap-1.5">
+                    <span class="text-gold">✦</span> Более 250 созданных украшений
+                </span>
+                <span class="flex items-center gap-1.5">
+                    <span class="text-gold">✦</span> Средняя оценка встреч 4.9 из 5
+                </span>
+                <span class="flex items-center gap-1.5">
+                    <span class="text-gold">✦</span> 100% натуральные минералы
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ТАРИФЫ И СТОИМОСТЬ -->
+    <comment-tag id="2"><section id="pricing" class="py-16 md:py-24 border-t border-sand-300">
+        </div>
+    </section></comment-tag id="2" text="КРИТИЧЕСКИЙ БАГ ВОРОНКИ: Секция тарифов сейчас абсолютно пуста. Кнопка 'Выбрать тариф и записаться' из первого экрана ведет в пустоту, из-за чего покупка невозможна.
+
+Сюда необходимо вернуть 3 проработанные карточки тарифов ('Базовый' за 4 500 ₽, акцентный 'Расширенный (Хит)' за 5 900 ₽ и 'Вдвоём с близкой' за 7 650 ₽) с прямыми CTA-кнопками бронирования под каждый тариф.
+
+Для максимальной конверсии также добавьте триггеры безопасности:
+1. 'Гарантия сохранности места: бронь всего 1 000 ₽, остаток на месте'.
+2. Бейдж 'Экономия 15%' на парном тарифе.
+3. Подарочный сертификат (кнопка 'Оформить в подарок подруге/маме')." type="suggestion">
+
+    <!-- АТМОСФЕРА И ЛОКАЦИЯ -->
+    <comment-tag id="3"><section class="py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-sand-50 border border-sand-300 rounded-3xl p-8 sm:p-12 overflow-hidden shadow-sm">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                    <div>
+                        <span class="font-script text-2xl text-gold-dark block mb-2">Пространство вдохновения</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl font-medium text-deep mb-6">Уютная камерная студия</h2>
+                        <p class="text-sm sm:text-base text-mutedEarth leading-relaxed mb-6 font-light">
+                            Мы встречаемся в светлом, эстетичном пространстве с панорамными окнами, ароматом трав, живыми свечами и спокойной музыкой. Никаких спешных звонков и суеты — только чистое творчество и контакт с природной текстурой камней.
+                        </p>
+                        
+                        <div class="space-y-4 text-sm text-deep">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-forest/10 flex items-center justify-center text-forest">📍</div>
+                                <span>Центр города: уютная арт-студия с удобной парковкой</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-gold/15 flex items-center justify-center text-gold-dark">📅</div>
+                                <span>Ближайшие группы: Суббота 12:00–15:00 и Воскресенье 16:00–19:00</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-sage/20 flex items-center justify-center text-forest">✨</div>
+                                <span>Количество мест строго ограничено (до 8 гостей)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" alt="Участница мастер-класса" class="rounded-2xl h-56 w-full object-cover shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=400&q=80" alt="Атмосфера студии" class="rounded-2xl h-56 w-full object-cover shadow-sm mt-6">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section></comment-tag id="3" text="БЛОК ДОВЕРИЯ К АВТОРУ (Person-to-Person): Сейчас на сайте полностью отсутствует блок с ведущей / мастером мастер-класса. Люди покупают ручное творчество и атмосферу не у 'студии', а у конкретной харизматичной личности с безупречным вкусом.
+
+Рекомендация: добавьте блок 'Ведущая мастер-класса' перед локацией:
+- Фото мастера за работой с минералами.
+- Имя и статус (например: 'Основательница мастерской «Бусы счастья», литотерапевт / дизайнер украшений с 5-летним опытом').
+- Прямая цитата: 'Я помогу вам почувствовать свой камень и создать вещь, которую вы не захотите снимать'.
+Это мгновенно снимет психологический барьер 'к кому я иду'." type="suggestion">
+
+    <!-- FAQ (АККОРДЕОН) -->
+    <section id="faq" class="py-16 md:py-24 bg-sand-200/40 border-t border-sand-300">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="font-script text-2xl text-gold-dark block mb-2">Ответы на вопросы</span>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-deep">Часто спрашивают</h2>
+                <div class="w-12 h-0.5 bg-gold mx-auto mt-4 mb-4"></div>
+            </div>
+
+            <div class="space-y-4">
+                
+                <!-- Вопрос 1 -->
+                <div class="bg-sand-50 rounded-2xl border border-sand-300 overflow-hidden">
+                    <button onclick="toggleFaq(1)" class="w-full text-left px-6 py-5 flex items-center justify-between font-serif text-lg sm:text-xl font-medium text-deep focus:outline-none">
+                        <span>Получится ли у меня, если я никогда не делала украшения?</span>
+                        <span id="faq-icon-1" class="text-xl text-forest font-sans transition-transform duration-300">+</span>
+                    </button>
+                    <div id="faq-content-1" class="hidden px-6 pb-5 text-sm text-mutedEarth font-light leading-relaxed border-t border-sand-200/50 pt-3">
+                        Обязательно получится! Более 80% участниц приходят вообще без опыта. Мастер находится рядом, показывает каждый шаг крупно и понятно, помогает правильно зажать замочки и закрепить тросик. Вы точно уйдёте с надёжным и красивым изделием.
+                    </div>
+                </div>
+
+                <!-- Вопрос 2 -->
+                <div class="bg-sand-50 rounded-2xl border border-sand-300 overflow-hidden">
+                    <button onclick="toggleFaq(2)" class="w-full text-left px-6 py-5 flex items-center justify-between font-serif text-lg sm:text-xl font-medium text-deep focus:outline-none">
+                        <span>Действительно ли камни натуральные?</span>
+                        <span id="faq-icon-2" class="text-xl text-forest font-sans transition-transform duration-300">+</span>
+                    </button>
+                    <div id="faq-content-2" class="hidden px-6 pb-5 text-sm text-mutedEarth font-light leading-relaxed border-t border-sand-200/50 pt-3">
+                        Да, абсолютно. Мы работаем только с проверенными поставщиками минералов: агаты, розовый и дымчатый кварц, лазурит, лабрадорит, сердолик, яшма, вулканическая лава. Вы почувствуете их природный вес, прохладу и живую фактуру.
+                    </div>
+                </div>
+
+                <!-- Вопрос 3 -->
+                <div class="bg-sand-50 rounded-2xl border border-sand-300 overflow-hidden">
+                    <button onclick="toggleFaq(3)" class="w-full text-left px-6 py-5 flex items-center justify-between font-serif text-lg sm:text-xl font-medium text-deep focus:outline-none">
+                        <span>Что входит в стоимость, нужно ли что-то докупать на месте?</span>
+                        <span id="faq-icon-3" class="text-xl text-forest font-sans transition-transform duration-300">+</span>
+                    </button>
+                    <div id="faq-content-3" class="hidden px-6 pb-5 text-sm text-mutedEarth font-light leading-relaxed border-t border-sand-200/50 pt-3">
+                        Никаких доплат нет. В тариф уже включены: камни на выбор, надежная гипоаллергенная фурнитура с родиевым и позолоченным покрытием, работа со всеми инструментами студии, угощения, чай и подарочная упаковка для готового изделия.
+                    </div>
+                </div>
+
+                <!-- Вопрос 4 -->
+                <div class="bg-sand-50 rounded-2xl border border-sand-300 overflow-hidden">
+                    <button onclick="toggleFaq(4)" class="w-full text-left px-6 py-5 flex items-center justify-between font-serif text-lg sm:text-xl font-medium text-deep focus:outline-none">
+                        <comment-tag id="4"><span>Можно ли перенести дату, если изменятся планы?</span></comment-tag id="4" text="В FAQ не закрыты 2 главных возражения, тормозящих прямую покупку:
+1. 'Что если украшение порвется дома?' — добавьте ответ с гарантией качества: 'Если в течение 3 месяцев с тросиком что-то случится, мы бесплатно починим его в студии или заменим фурнитуру'.
+2. 'Можно ли купить мастер-класс в подарок?' — добавьте вопрос про бумажные подарочные сертификаты в крафтовом конверте с сургучом и электронные сертификаты за 5 минут. Подарочный трафик для творческих МК составляет до 35% всех продаж." type="suggestion">
+                        <span id="faq-icon-4" class="text-xl text-forest font-sans transition-transform duration-300">+</span>
+                    </button>
+                    <div id="faq-content-4" class="hidden px-6 pb-5 text-sm text-mutedEarth font-light leading-relaxed border-t border-sand-200/50 pt-3">
+                        Конечно. Мы понимаем, что жизнь непредсказуема. Если вы предупредите нас не позднее чем за 48 часов до начала встречи, мы без проблем перенесем ваше бронирование на любую удобную следующую дату.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ФУТЕР -->
+    <footer class="bg-forest-dark text-sand-100 py-12 border-t border-forest">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 pb-8 border-b border-sand-300/20">
+                <div class="text-center md:text-left">
+                    <span class="font-serif text-2xl font-semibold tracking-wide text-sand-50">Бусы счастья</span>
+                    <p class="font-script text-base text-gold mt-0.5">Смыслы, которые рядом</p>
+                </div>
+
+                <div class="flex items-center space-x-6 text-sm text-sand-200">
+                    <a href="#" class="hover:text-gold transition">Telegram</a>
+                    <a href="#" class="hover:text-gold transition">WhatsApp</a>
+                    <a href="#" class="hover:text-gold transition">Instagram</a>
+                </div>
+            </div>
+
+            <div class="pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-sand-300/70 gap-3">
+                <p>© 2026 Мастерская «Бусы счастья». Все права защищены.</p>
+                <a href="#" class="hover:underline">Политика конфиденциальности</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- МОДАЛЬНОЕ ОКНО БРОНИРОВАНИЯ -->
+    <div id="booking-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-sand-50 rounded-3xl max-w-md w-full p-6 sm:p-8 border border-sand-300 shadow-2xl relative transform scale-95 transition-transform duration-300" id="modal-container">
+            
+            <!-- Кнопка закрытия -->
+            <button onclick="closeBookingModal()" class="absolute top-5 right-5 text-mutedEarth hover:text-deep text-2xl leading-none">
+                &times;
+            </button>
+
+            <!-- Основное состояние формы -->
+            <div id="modal-form-content">
+                <div class="text-center mb-6">
+                    <span class="font-script text-xl text-gold-dark">Шаг к своему талисману</span>
+                    <h3 class="font-serif text-2xl sm:text-3xl font-semibold text-deep mt-1">Бронирование места</h3>
+                    <p class="text-xs text-mutedEarth mt-1">Оставьте контакты, чтобы закрепить место в группе</p>
+                </div>
+
+                <comment-tag id="5"><form onsubmit="handleFormSubmit(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-deep mb-1">Ваше имя</label>
+                        <input type="text" required placeholder="Анна" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:border-forest text-sm bg-white">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-deep mb-1">Телефон / WhatsApp</label>
+                        <input type="tel" required placeholder="+7 (999) 000-00-00" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:border-forest text-sm bg-white">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-deep mb-1">Тариф</label>
+                        <select id="modal-plan-select" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:border-forest text-sm bg-white">
+                            <option value="Базовый">Тариф «Базовый» — 4 500 ₽</option>
+                            <option value="Расширенный">Тариф «Расширенный» (Хит) — 5 900 ₽</option>
+                            <option value="Вдвоем с близкой">«Вдвоём с близкой» — 7 650 ₽</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-deep mb-1">Промокод (если есть)</label>
+                        <input type="text" placeholder="HAPPY" class="w-full px-4 py-3 rounded-xl border border-sand-300 focus:outline-none focus:border-forest text-sm bg-white">
+                    </div>
+
+                    <button type="submit" class="w-full py-4 mt-2 rounded-full bg-forest text-sand-50 font-medium text-sm hover:bg-forest-light shadow-md transition duration-300">
+                        Подтвердить и забронировать
+                    </button>
+                    
+                    <p class="text-[11px] text-center text-mutedEarth">
+                        Нажимая кнопку, вы соглашаетесь на обработку данных
+                    </p>
+                </form></comment-tag id="5" text="Оптимизация формы конверсии (снижение трения на 40%):
+1. Уберите поле 'Промокод' из видимой части — оно провоцирует пользователей уйти с лендинга искать промокоды в соцсетях и бросать покупку (лучше сделать скрытый спойлер 'Есть промокод?').
+2. Добавьте выбор желаемой даты / слота (например, радио-кнопки: '25 окт (Сб) 12:00' или '26 окт (Вс) 16:00'). Это дает ощущение реального бронирования события.
+3. Измените текст кнопки на более конкретный и безопасный: 'Забронировать место (предоплата 1 000 ₽)' или 'Забронировать без оплаты сейчас'." type="suggestion">
+            </div>
+
+            <!-- Экран успеха -->
+            <div id="modal-success-content" class="hidden text-center py-6">
+                <div class="w-16 h-16 rounded-full bg-sage/20 text-forest mx-auto flex items-center justify-center text-2xl mb-4">
+                    ✓
+                </div>
+                <h4 class="font-serif text-2xl font-semibold text-deep mb-2">Место успешно забронировано!</h4>
+                <p class="text-sm text-mutedEarth leading-relaxed mb-6">
+                    Мы связались с вами в WhatsApp для подтверждения времени и отправки памятки участницы. До скорой встречи!
+                </p>
+                <button onclick="closeBookingModal()" class="px-6 py-2.5 rounded-full bg-forest text-sand-50 text-xs uppercase font-semibold">
+                    Отлично
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- СКРИПТЫ УПРАВЛЕНИЯ -->
+    <script>
+        // Мобильное меню
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+        }
+        if (menuBtn) {
+            menuBtn.addEventListener('click', toggleMenu);
+        }
+
+        // Модальное окно
+        const modal = document.getElementById('booking-modal');
+        const modalContainer = document.getElementById('modal-container');
+        const planSelect = document.getElementById('modal-plan-select');
+        const formContent = document.getElementById('modal-form-content');
+        const successContent = document.getElementById('modal-success-content');
+
+        function openBookingModal(planName = 'Базовый') {
+            if (planSelect) {
+                if (planName.includes('Расширенный')) planSelect.value = 'Расширенный';
+                else if (planName.includes('Вдвоем') || planName.includes('двоих')) planSelect.value = 'Вдвоем с близкой';
+                else planSelect.value = 'Базовый';
+            }
+            formContent.classList.remove('hidden');
+            successContent.classList.add('hidden');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContainer.classList.remove('scale-95');
+                modalContainer.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeBookingModal() {
+            modal.classList.add('opacity-0');
+            modalContainer.classList.remove('scale-100');
+            modalContainer.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeBookingModal();
+            }
+        });
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            formContent.classList.add('hidden');
+            successContent.classList.remove('hidden');
+        }
+
+        // Интерактивный слайдер для галереи работ
+        (function initGallerySlider() {
+            const track = document.getElementById('slider-track');
+            const trackContainer = document.getElementById('slider-track-container');
+            const prevBtn = document.getElementById('slider-prev');
+            const nextBtn = document.getElementById('slider-next');
+            const dotsContainer = document.getElementById('slider-dots');
+
+            if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
+
+            const slides = Array.from(track.children);
+            const totalSlides = slides.length;
+            let currentIndex = 0;
+
+            function getVisibleCount() {
+                if (window.innerWidth >= 1024) return 3; // Desktop
+                if (window.innerWidth >= 768) return 2;  // Tablet
+                return 1;                                // Mobile
+            }
+
+            function getMaxIndex() {
+                return Math.max(0, totalSlides - getVisibleCount());
+            }
+
+            function updateSlider() {
+                const maxIndex = getMaxIndex();
+                if (currentIndex > maxIndex) currentIndex = maxIndex;
+                if (currentIndex < 0) currentIndex = 0;
+
+                const slideWidthPercent = 100 / getVisibleCount();
+                track.style.transform = `translateX(-${currentIndex * slideWidthPercent}%)`;
+
+                // Обновляем состояние кнопок
+                prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+                prevBtn.style.pointerEvents = currentIndex === 0 ? 'none' : 'auto';
+                nextBtn.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
+                nextBtn.style.pointerEvents = currentIndex >= maxIndex ? 'none' : 'auto';
+
+                // Обновляем точки
+                renderDots();
+            }
+
+            function renderDots() {
+                const maxIndex = getMaxIndex();
+                const totalPages = maxIndex + 1;
+                dotsContainer.innerHTML = '';
+
+                for (let i = 0; i < totalPages; i++) {
+                    const dot = document.createElement('button');
+                    dot.setAttribute('aria-label', `Слайд ${i + 1}`);
+                    dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                        i === currentIndex 
+                            ? 'bg-forest w-7' 
+                            : 'bg-sand-300 hover:bg-gold'
+                    }`;
+                    dot.addEventListener('click', () => {
+                        currentIndex = i;
+                        updateSlider();
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+            }
+
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateSlider();
+                }
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentIndex < getMaxIndex()) {
+                    currentIndex++;
+                    updateSlider();
+                }
+            });
+
+            // Поддержка Touch / Swipe на мобильных и планшетах
+            let startX = 0;
+            let isDragging = false;
+
+            trackContainer.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            }, { passive: true });
+
+            trackContainer.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                const endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+
+                if (Math.abs(diff) > 40) {
+                    if (diff > 0 && currentIndex < getMaxIndex()) {
+                        currentIndex++;
+                    } else if (diff < 0 && currentIndex > 0) {
+                        currentIndex--;
+                    }
+                    updateSlider();
+                }
+                isDragging = false;
+            }, { passive: true });
+
+            window.addEventListener('resize', () => {
+                updateSlider();
+            });
+
+            updateSlider();
+        })();
+
+        // FAQ Аккордеон
+        function toggleFaq(index) {
+            const content = document.getElementById(`faq-content-${index}`);
+            const icon = document.getElementById(`faq-icon-${index}`);
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.innerText = '−';
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.innerText = '+';
+                icon.classList.remove('rotate-180');
+            }
+        }
+    </script>
+</body>
+</html>
